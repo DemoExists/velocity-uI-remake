@@ -8,9 +8,9 @@ local settings = {
     drag_time = 0.5;
 };
 
-local drawing = loadstring(game:HttpGet("https://raw.githubusercontent.com/DemoExists/velocity-uI-remake/main/drawing"))();
-local tween = loadstring(game:HttpGet("https://raw.githubusercontent.com/DemoExists/velocity-uI-remake/main/tween"))() -- shhhh
-local signal = loadstring(game:HttpGet('https://raw.githubusercontent.com/DemoExists/velocity-uI-remake/main/signal'))()
+local drawing = loadstring(game:HttpGet("https://raw.githubusercontent.com/DemoExists/velocity-uI-remake/refs/heads/main/drawing"))();
+local tween = loadstring(game:HttpGet("https://raw.githubusercontent.com/DemoExists/velocity-uI-remake/refs/heads/main/tween"))() -- shhhh
+local signal = loadstring(game:HttpGet('https://raw.githubusercontent.com/DemoExists/velocity-uI-remake/refs/heads/main/signal'))()
 
 -- library
 if not isfolder(settings.folder_name) then
