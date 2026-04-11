@@ -181,7 +181,7 @@ function utility.nextflag()
 end
 function utility.rgba(r, g, b, alpha)
     local rgb = Color3.fromRGB(r, g, b)
-    local mt = table.clone(getmetatable(rgb))
+    local mt = table.clone(getrawmetatable(rgb))
     
     setreadonly(mt, false)
     local old = mt.__index
