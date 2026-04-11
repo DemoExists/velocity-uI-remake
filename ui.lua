@@ -22,10 +22,10 @@ if not isfile(settings.folder_name.."/window_size.txt") then
     writefile(settings.folder_name.."/window_size.txt", "")
 end;
 local images = {
-    ['gradient90'] = "https://raw.githubusercontent.com/DemoExists/velocity-uI-remake/main/gradient.png";
-    ['gradient180'] = "https://raw.githubusercontent.com/DemoExists/velocity-uI-remake/main/gradient180.png";
-    ['arrow_down'] = "https://raw.githubusercontent.com/DemoExists/velocity-uI-remake/main/arrowdown.png";
-    ['arrow_up'] = "https://raw.githubusercontent.com/DemoExists/velocity-uI-remake/main/arrowup.png";
+    ['gradient90'] = "https://raw.githubusercontent.com/DemoExists/velocity-uI-remake/refs/heads/main/gradient.png";
+    ['gradient180'] = "https://raw.githubusercontent.com/DemoExists/velocity-uI-remake/refs/heads/main/gradient180.png";
+    ['arrow_down'] = "https://raw.githubusercontent.com/DemoExists/velocity-uI-remake/refs/heads/main/arrowdown.png";
+    ['arrow_up'] = "https://raw.githubusercontent.com/DemoExists/velocity-uI-remake/refs/heads/main/arrowup.png";
 }
 for i,v in next, images do
     if not isfile(settings.folder_name..'/assets/'..i..'.ln') then
