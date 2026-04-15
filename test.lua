@@ -945,7 +945,7 @@ function library.object_colorpicker(default, defaultalpha, parent, count, flag, 
              
             end
 
-            callback(utility.rgba(hsv.r * 255, hsv.g * 255, hsv.b * 255, alpha))
+            callback(utility.rgba(hsv.R * 255, hsv.G * 255, hsv.B * 255, alpha))
 
         end
     end
