@@ -191,49 +191,22 @@ function utility.nextflag()
     return string.format("%.14g", totalunnamedflags)
 end
 function utility.rgba(r, g, b, alpha)
-    r = math.clamp(math.floor(tonumber(r) or 0), 0, 255)
-    g = math.clamp(math.floor(tonumber(g) or 0), 0, 255)
-    b = math.clamp(math.floor(tonumber(b) or 0), 0, 255)
-    alpha = tonumber(alpha) or 1
-
-    local cache_key = string.format("%d:%d:%d:%.4f", r, g, b, alpha)
-    local cached = rgba_cache[cache_key]
-    if cached then
-        return cached
-    end
-
     local rgb = Color3.fromRGB(r, g, b)
-    local rawMt = getrawmetatable(rgb)
-    if not rawMt then
-        rgba_cache[cache_key] = rgb
-        return rgb
-    end
-
-    local mt = table.clone(rawMt)
+    local mt = getrawmetatable(rgb)
+    
     setreadonly(mt, false)
-
-    local baseR, baseG, baseB = rgb.R, rgb.G, rgb.B
     local old = mt.__index
-
+    
     mt.__index = newcclosure(function(self, key)
-        if type(key) == "string" and key:lower() == "a" then
+        if key:lower() == "a" then
             return alpha
         end
-        if type(old) == "function" then
-            return old(self, key)
-        end
-        if type(old) == "table" then
-            return old[key]
-        end
-        if key == "R" or key == "r" then return baseR end
-        if key == "G" or key == "g" then return baseG end
-        if key == "B" or key == "b" then return baseB end
-        return nil
+        
+        return old(self, key)
     end)
-
+    
     setrawmetatable(rgb, mt)
-
-    rgba_cache[cache_key] = rgb
+    
     return rgb
 end
 
