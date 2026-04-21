@@ -1408,7 +1408,7 @@ function library:create_page(name)
             button.BackgroundColor3 = Color3.fromRGB(187, 131, 255)
             button.BackgroundTransparency = 1.000
             button.BorderSizePixel = 0
-            button.Position = UDim2.new(0, 0, 0, 0)
+            button.Position = UDim2.new(-0.2, 0, 0, 0)
             button.Size = UDim2.new(0.02, 0, 1, 0)
             button.Font = Enum.Font.Code
             button.Text = "--"
