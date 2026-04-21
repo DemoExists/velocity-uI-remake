@@ -1544,4 +1544,4 @@ function library:deleteConfig()
     end
 end
 
-return library
+return library, menu
