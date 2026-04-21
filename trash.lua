@@ -557,7 +557,7 @@ function library:create_page(name)
                 main.BorderColor3 = Color3.fromRGB(60, 60, 60)
 			end)
         end
-        function group:addSlider(args,sub)
+        function group:addSlider(args)
             if not args.flag or not args.max then return warn("⚠️ incorrect arguments ⚠️") end
             groupbox.Size += UDim2.new(0, 0, 0, 30)
             local slider = Instance.new("Frame")
@@ -636,7 +636,7 @@ function library:create_page(name)
 				else
 					fill:TweenSize(UDim2.new(0,1,1,0),Enum.EasingDirection.In,Enum.EasingStyle.Sine,0.01)
                 end
-                valuetext.Text = value..sub
+                valuetext.Text = tostring(value).."/"..tostring(args.max)
                 library.flags[args.flag] = value
                 if args.callback then
                     args.callback(value)
