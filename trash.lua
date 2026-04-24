@@ -187,7 +187,7 @@ function library:create_page(name)
             text.Size = UDim2.new(0, 0, 1, 2)
             text.Font = Enum.Font.Code
             text.Text = args.text or args.flag
-            text.TextColor3 = (args.risky and Color3.fromRGB(100, 100, 100)) or Color3.fromRGB(155, 155, 155)
+            text.TextColor3 = (args.risky and Color3.fromRGB(242, 100, 100)) or Color3.fromRGB(155, 155, 155)
             text.TextSize = 13.000
             text.TextStrokeTransparency = 0.000
             text.TextXAlignment = Enum.TextXAlignment.Left
