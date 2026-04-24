@@ -1132,6 +1132,7 @@ function library:create_page(name)
                     text.TextStrokeTransparency = 0.000
                 
                     button.MouseButton1Click:Connect(function()
+                        text.TextColor3 = Color3.fromRGB(100, 100, 100)
                         updateValue(v)
                     end)
                 end
