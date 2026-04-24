@@ -211,7 +211,7 @@ function library:create_page(name)
                 state = newState
                 library.flags[args.flag] = state
                 front.BackgroundColor3 = state and library.libColor or Color3.fromRGB(15,15,15)
-                text.TextColor3 = state and Color3.fromRGB(244, 244, 244) or Color3.fromRGB(144, 144, 144)
+                text.TextColor3 = ((args.risky and state and Color3.fromRGB(242, 36, 36)) or args.risky and Color3.fromRGB(242, 100, 100)) or (state and Color3.fromRGB(244, 244, 244)) or Color3.fromRGB(144, 144, 144)
                 if args.callback then
                     args.callback(state)
                 end
@@ -222,7 +222,7 @@ function library:create_page(name)
                 library.flags[args.flag] = state
                 mid.BorderColor3 = Color3.fromRGB(30,30,30)
                 front.BackgroundColor3 = state and library.libColor or Color3.fromRGB(15,15,15)
-                text.TextColor3 = state and Color3.fromRGB(244, 244, 244) or Color3.fromRGB(144, 144, 144)
+                text.TextColor3 = ((args.risky and state and Color3.fromRGB(242, 36, 36)) or args.risky and Color3.fromRGB(242, 100, 100)) or (state and Color3.fromRGB(244, 244, 244)) or Color3.fromRGB(144, 144, 144)
                 if args.callback then
                     args.callback(state)
                 end
