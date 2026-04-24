@@ -1476,21 +1476,26 @@ function library:createConfig()
     library:refreshConfigs()
 end
 function library:saveConfig()
-    local name = library.flags["selected_config"]
-    local jig = {}
-    for i,v in next, library.flags do
-        if library.options[i].skipflag then continue end
-        if typeof(v) == "Color3" then
-            jig[i] = {v.R,v.G,v.B}
-        elseif typeof(v) == "EnumItem" then
-            jig[i] = {string.split(tostring(v),".")[2],string.split(tostring(v),".")[3]}
-        else
-            jig[i] = v
+    if isfile(library.flags["selected_config"]) then
+        local name = library.flags["selected_config"]
+        local jig = {}
+        for i,v in next, library.flags do
+            if library.options[i].skipflag then continue end
+            if typeof(v) == "Color3" then
+                jig[i] = {v.R,v.G,v.B}
+            elseif typeof(v) == "EnumItem" then
+                jig[i] = {string.split(tostring(v),".")[2],string.split(tostring(v),".")[3]}
+            else
+                jig[i] = v
+            end
         end
+        writefile(library.flags["selected_config"],game:GetService("HttpService"):JSONEncode(jig))
+        library:notify("Succesfully updated config "..name..".cfg!")
+        library:refreshConfigs()
+    else
+        library:notify("Invalid/No Config Selected")
+        library:refreshConfigs()
     end
-    writefile("dxm_configs/"..name..".cfg",game:GetService("HttpService"):JSONEncode(jig))
-    library:notify("Succesfully updated config "..name..".cfg!")
-    library:refreshConfigs()
 end
 function library:loadConfig()
     local name = library.flags["selected_config"]
