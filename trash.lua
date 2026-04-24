@@ -1491,7 +1491,7 @@ function library:saveConfig()
             end
         end
         writefile(library.flags["selected_config"],game:GetService("HttpService"):JSONEncode(jig))
-        library:notify("Succesfully updated config "..name..".cfg!")
+        library:notify("Succesfully updated config "..name.."!")
         library:refreshConfigs()
     else
         library:notify("Invalid/No Config Selected")
@@ -1500,11 +1500,11 @@ function library:saveConfig()
 end
 function library:loadConfig()
     local name = library.flags["selected_config"]
-    if not isfile("dxm_configs/"..name..".cfg") then
+    if not isfile(name) then
         library:notify("Config file not found!")
         return
     end
-    local config = game:GetService("HttpService"):JSONDecode(readfile("dxm_configs/"..name..".cfg"))
+    local config = game:GetService("HttpService"):JSONDecode(readfile(name))
     for i,v in next, library.options do
         spawn(function()pcall(function()
             if config[i] then
