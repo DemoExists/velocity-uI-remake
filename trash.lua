@@ -1459,6 +1459,7 @@ function contains(list, x)
 end
 function library:createConfig()
     local name = library.flags["config_name"]
+    print(tostring(name) .. " is being created")
     if contains(library.options["selected_config"].values, name) then return library:notify(name..".cfg already exists!") end
     if name == "" then return library:notify("Put a name goofy") end
     local jig = {}
@@ -1473,12 +1474,14 @@ function library:createConfig()
         end
     end
     writefile("dxm_configs/"..name..".cfg",game:GetService("HttpService"):JSONEncode(jig))
+    print(tostring"dxm_configs/"..name..".cfg" .. " is created loaded")
     library:notify("Succesfully created config "..name..".cfg!")
     library:refreshConfigs()
 end
 function library:saveConfig()
     if isfile(library.flags["selected_config"]) then
         local name = library.flags["selected_config"]
+        print(tostring(name) .. " is being saved")
         local jig = {}
         for i,v in next, library.flags do
             if library.options[i].skipflag then continue end
@@ -1490,7 +1493,7 @@ function library:saveConfig()
                 jig[i] = v
             end
         end
-        writefile(library.flags["selected_config"],game:GetService("HttpService"):JSONEncode(jig))
+        writefile(name,game:GetService("HttpService"):JSONEncode(jig))
         library:notify("Succesfully updated config "..name.."!")
         library:refreshConfigs()
     else
@@ -1500,6 +1503,7 @@ function library:saveConfig()
 end
 function library:loadConfig()
     local name = library.flags["selected_config"]
+    print(tostring(name) .. " is being loaded")
     if not isfile(name) then
         library:notify("Config file not found!")
         return
