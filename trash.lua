@@ -1458,7 +1458,7 @@ function contains(list, x)
 end
 function library:createConfig()
     local name = library.flags["config_name"]
-    if contains(library.options["selected_config"].values, name) then return library:notify(name..".cfg already exists!") end
+    --if contains(library.options["selected_config"].values, name) then return library:notify(name..".cfg already exists!") end
     if name == "" then return library:notify("Put a name goofy") end
     local jig = {}
     for i,v in next, library.flags do
@@ -1471,7 +1471,7 @@ function library:createConfig()
             jig[i] = v
         end
     end
-    writefile("OsirisCFGS/"..name..".cfg",game:GetService("HttpService"):JSONEncode(jig))
+    writefile("dxm_configs/"..name..".cfg",game:GetService("HttpService"):JSONEncode(jig))
     library:notify("Succesfully created config "..name..".cfg!")
     library:refreshConfigs()
 end
@@ -1488,17 +1488,17 @@ function library:saveConfig()
             jig[i] = v
         end
     end
-    writefile("OsirisCFGS/"..name..".cfg",game:GetService("HttpService"):JSONEncode(jig))
+    writefile("dxm_configs/"..name..".cfg",game:GetService("HttpService"):JSONEncode(jig))
     library:notify("Succesfully updated config "..name..".cfg!")
     library:refreshConfigs()
 end
 function library:loadConfig()
     local name = library.flags["selected_config"]
-    if not isfile("OsirisCFGS/"..name..".cfg") then
+    if not isfile("dxm_configs/"..name..".cfg") then
         library:notify("Config file not found!")
         return
     end
-    local config = game:GetService("HttpService"):JSONDecode(readfile("OsirisCFGS/"..name..".cfg"))
+    local config = game:GetService("HttpService"):JSONDecode(readfile("dxm_configs/"..name..".cfg"))
     for i,v in next, library.options do
         spawn(function()pcall(function()
             if config[i] then
@@ -1532,14 +1532,14 @@ function library:loadConfig()
 end
 function library:refreshConfigs()
     local tbl = {}
-    for i,v in next, listfiles("OsirisCFGS") do
+    for i,v in next, listfiles("dxm_configs") do
         table.insert(tbl,v)
     end
     library.options["selected_config"].refresh(tbl)
 end
 function library:deleteConfig()
-    if isfile("OsirisCFGS/"..library.flags["selected_config"]..".cfg") then
-        delfile("OsirisCFGS/"..library.flags["selected_config"]..".cfg")
+    if isfile("dxm_configs/"..library.flags["selected_config"]..".cfg") then
+        delfile("dxm_configs/"..library.flags["selected_config"]..".cfg")
         library:refreshConfigs()
     end
 end
