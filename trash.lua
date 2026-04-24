@@ -1548,8 +1548,8 @@ function library:refreshConfigs()
     library.options["selected_config"].refresh(tbl)
 end
 function library:deleteConfig()
-    if isfile("dxm_configs/"..library.flags["selected_config"]..".cfg") then
-        delfile("dxm_configs/"..library.flags["selected_config"]..".cfg")
+    if isfile(library.flags["selected_config"]) then
+        delfile(library.flags["selected_config"])
         library:refreshConfigs()
     end
 end
